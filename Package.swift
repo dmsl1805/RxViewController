@@ -15,7 +15,10 @@ let package = Package(
     .package(url: "https://github.com/dmsl1805/RxExpect.git", .branch("support-rxswift6")),
   ],
   targets: [
-    .target(name: "RxViewController", dependencies: ["RxSwift", "RxCocoa"]),
+    .target(name: "RxViewController", dependencies: [
+        .product(name: "RxSwift", package: "RxSwift"),
+        .product(name: "RxCocoa", package: "RxSwift")
+    ]),
     .testTarget(name: "RxViewControllerTests", dependencies: ["RxViewController", "RxExpect"]),
   ]
 )
